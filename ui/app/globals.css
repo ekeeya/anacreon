@@ -1,0 +1,39 @@
+html.dark {
+  color-scheme: dark;
+}
+
+@import "tailwindcss";
+
+/* Enable dark: variant in Tailwind v4 using a class strategy */
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-nunito);
+  --font-mono: var(--font-jetbrains-mono);
+  --text-sm: 0.9rem; /* slightly smaller default */
+  --text-base: 0.95rem; /* reduce base */
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+/* Small helper animation used on dashboard */
+@keyframes fadein {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fadein { animation: fadein .25s ease-out both; }
+
+/* Set slightly smaller default font size across the app */
+html { font-size: 15px; }
